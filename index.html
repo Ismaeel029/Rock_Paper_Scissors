@@ -27,49 +27,55 @@
                 } //end switch
             }//end function couterPlay
             
-
             function playRound(playerSelect, computerSelect){
-                playerSelect = prompt("Enter your choice: ");
+                
                 playerSelect = playerSelect.toLowerCase();
                 
                 if(playerSelect=="rock"){
                     if(computerSelect=="paper"){
-                        return "You Lose! Paper beats Rock";
+                        console.log("You Lose! Paper beats Rock");
                         gameStatus = status.LOSE;
                     }//end nested if
                     if(computerSelect=="scissors"){
-                        return "You Win! Rock beats Scissors";
+                        console.log("You Win! Rock beats Scissors");
                         gameStatus = status.WIN;
                     }//end nested if
                 }//end outer if
                 
                 if(playerSelect=="paper"){
                     if(computerSelect=="rock"){
-                        return "You Win! Paper beats Rock";
+                        console.log("You Win! Paper beats Rock");
                         gameStatus = status.WIN;
                     }//end nested if
                     if(computerSelect=="scissors"){
-                        return "You Lose! Scissors beats Paper";
+                        console.log("You Lose! Scissors beats Paper");
                         gameStatus = status.LOSE;
                     }//end nested if
                 }//end outer if
                 
                 if(playerSelect=="scissors"){
                     if(computerSelect=="rock"){
-                        return "You Lose! Rock beats Scissors";
+                        console.log("You Lose! Rock beats Scissors");
                         gameStatus = status.LOSE;
                     }//end inner if
                     if(computerSelect=="paper"){
-                        return "You Win! Scissors beats Paper";
+                        console.log("You Win! Scissors beats Paper");
                         gameStatus = status.WIN;
                     }//end nested if
                 }//end outer if
 
                 if(playerSelect==computerSelect){
-                    return "The game is a draw";
+                    console.log("The game is a draw");
                     gameStatus = status.DRAW;
                 }//end if
             } //end function playRound
+
+            function game(){
+                for(let i=1; i<=5; i++){
+                    playerSelect = prompt("Enter your choice: ");
+                    playRound();
+                }//end for loop
+            }//end function game
 
         </script>
     </body>
