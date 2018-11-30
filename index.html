@@ -7,6 +7,14 @@
 
     <body>
         <script>
+            const status = {
+                WIN: 'win',
+                LOSE: 'lose',
+                DRAW: 'draw'
+            }
+
+            let gameStatus = status.WIN;
+
             function counterPlay(){
                 let a = 1 + Math.floor( Math.random()*3 );
                 switch(a){
@@ -18,24 +26,51 @@
                         return "scissors";
                 } //end switch
             }//end function couterPlay
-            console.log(counterPlay());
+            
 
             function playRound(playerSelect, computerSelect){
-                if(playerSelect=="paper" && computerSelect=="rock")
-                    return "You Win! Paper beats Rock";
-                if(playerSelect=="rock" && computerSelect=="paper")
-                    return "You Lose! Paper beats Rock";
+                playerSelect = prompt("Enter your choice: ");
+                playerSelect = playerSelect.toLowerCase();
+                
+                if(playerSelect=="rock"){
+                    if(computerSelect=="paper"){
+                        return "You Lose! Paper beats Rock";
+                        gameStatus = status.LOSE;
+                    }//end nested if
+                    if(computerSelect=="scissors"){
+                        return "You Win! Rock beats Scissors";
+                        gameStatus = status.WIN;
+                    }//end nested if
+                }//end outer if
+                
+                if(playerSelect=="paper"){
+                    if(computerSelect=="rock"){
+                        return "You Win! Paper beats Rock";
+                        gameStatus = status.WIN;
+                    }//end nested if
+                    if(computerSelect=="scissors"){
+                        return "You Lose! Scissors beats Paper";
+                        gameStatus = status.LOSE;
+                    }//end nested if
+                }//end outer if
+                
+                if(playerSelect=="scissors"){
+                    if(computerSelect=="rock"){
+                        return "You Lose! Rock beats Scissors";
+                        gameStatus = status.LOSE;
+                    }//end inner if
+                    if(computerSelect=="paper"){
+                        return "You Win! Scissors beats Paper";
+                        gameStatus = status.WIN;
+                    }//end nested if
+                }//end outer if
 
-                if(playerSelect=="scissors" && computerSelect=="paper")
-                    return "You Win! Scissors beats Paper";
-                if(playerSelect=="paper" && computerSelect=="scissors")
-                    return "You Lose! Scissors beats Paper";
-
-                if(playerSelect=="rock" && computerSelect=="scissors")
-                    return "You Win! Rock beats Scissors";
-                if(playerSelect=="scissors" && computerSelect=="rock")
-                    return "You Lose! Rock beats Scissors";
+                if(playerSelect==computerSelect){
+                    return "The game is a draw";
+                    gameStatus = status.DRAW;
+                }//end if
             } //end function playRound
+
         </script>
     </body>
 </html>
