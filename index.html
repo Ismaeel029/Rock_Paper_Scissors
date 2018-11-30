@@ -20,7 +20,22 @@
             }//end function couterPlay
             console.log(counterPlay());
 
-            
+            function playRound(playerSelect, computerSelect){
+                if(playerSelect=="paper" && computerSelect=="rock")
+                    return "You Win! Paper beats Rock";
+                if(playerSelect=="rock" && computerSelect=="paper")
+                    return "You Lose! Paper beats Rock";
+
+                if(playerSelect=="scissors" && computerSelect=="paper")
+                    return "You Win! Scissors beats Paper";
+                if(playerSelect=="paper" && computerSelect=="scissors")
+                    return "You Lose! Scissors beats Paper";
+
+                if(playerSelect=="rock" && computerSelect=="scissors")
+                    return "You Win! Rock beats Scissors";
+                if(playerSelect=="scissors" && computerSelect=="rock")
+                    return "You Lose! Rock beats Scissors";
+            } //end function playRound
         </script>
     </body>
 </html>
