@@ -7,6 +7,19 @@
 
     <body>
         <script>
+            function counterPlay(){
+                let a = 1 + Math.floor( Math.random()*3 );
+                switch(a){
+                    case 1:
+                        return "rock";
+                    case 2:
+                        return "paper";
+                    case 3:
+                        return "scissors";
+                } //end switch
+            }//end function couterPlay
+            console.log(counterPlay());
+
             
         </script>
     </body>
