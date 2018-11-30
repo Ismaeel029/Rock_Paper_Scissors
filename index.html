@@ -14,6 +14,7 @@
             }
 
             let gameStatus = status.WIN;
+            let playerPoint = 0; let computerPoint = 0;
 
             function counterPlay(){
                 let a = 1 + Math.floor( Math.random()*3 );
@@ -28,8 +29,6 @@
             }//end function couterPlay
             
             function playRound(playerSelect, computerSelect){
-                
-                playerSelect = playerSelect.toLowerCase();
                 
                 if(playerSelect=="rock"){
                     if(computerSelect=="paper"){
@@ -72,11 +71,30 @@
 
             function game(){
                 for(let i=1; i<=5; i++){
-                    playerSelect = prompt("Enter your choice: ");
-                    playRound();
+                    let player = prompt("Enter your choice: ");
+                    player = player.toLowerCase();
+                    let computer = counterPlay();
+                    playRound(player,computer);
+                    switch(gameStatus){
+                        case status.WIN:
+                            +playerPoint++;
+                            break;
+                        case status.LOSE:
+                            +computerPoint++;
+                            break;
+                        case status.DRAW:
+                            break;
+                    }//end switch
                 }//end for loop
+                console.log("\nYour Point: " + playerPoint + "\nComputer Point: " + computerPoint);
+                if(playerPoint > computerPoint)
+                    console.log("\nPlayer wins with a point of " + playerPoint);
+                else if(playerPoint < computerPoint)
+                    console.log("\nComputer wins with a point of " + computerPoint);
+                else
+                    console.log("\nDraw");
             }//end function game
-
+            game();
         </script>
     </body>
 </html>
