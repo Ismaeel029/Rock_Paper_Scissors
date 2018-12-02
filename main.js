@@ -1,65 +1,90 @@
- /*const status = {
+let playerBtn = document.querySelectorAll('button');
+let result = document.querySelector('#results');
+const score = document.querySelector('#score');
+const status = {
     WIN: 'win',
     LOSE: 'lose',
     DRAW: 'draw'
 }
 
 let gameStatus = status.WIN;
-let playerPoint = 0; let computerPoint = 0; */
+let playerPoint = 0; let computerPoint = 0; 
 
 function counterPlay(){
     let a = 1 + Math.floor( Math.random()*3 );
     switch(a){
         case 1:
             return "rock";
+            break;
         case 2:
             return "paper";
+            break;
         case 3:
             return "scissors";
+            break;
     } //end switch
 }//end function couterPlay
-
-let playerBtn = document.querySelectorAll('button');
             
-function playRound(playerSelect, computerSelect){
-                
+function playRound(playerSelect, computerSelect){                
     if(playerSelect=="rock"){
         if(computerSelect=="paper"){
-            console.log("You Lose! Paper beats Rock");
+            result.textContent = "You Lose! Paper beats Rock";
             gameStatus = status.LOSE;
         }//end nested if
         if(computerSelect=="scissors"){
-            console.log("You Win! Rock beats Scissors");
+            result.textContent = "You Win! Rock beats Scissors";
             gameStatus = status.WIN;
         }//end nested if
-     }//end outer if
+    }//end outer if
                 
     if(playerSelect=="paper"){
         if(computerSelect=="rock"){
-            console.log("You Win! Paper beats Rock");
+            result.textContent = "You Win! Paper beats Rock";
             gameStatus = status.WIN;
         }//end nested if
         if(computerSelect=="scissors"){
-            console.log("You Lose! Scissors beats Paper");
+            result.textContent = "You Lose! Scissors beats Paper";
             gameStatus = status.LOSE;
         }//end nested if
     }//end outer if
                 
     if(playerSelect=="scissors"){
         if(computerSelect=="rock"){
-            console.log("You Lose! Rock beats Scissors");
+            result.textContent = "You Lose! Rock beats Scissors";
             gameStatus = status.LOSE;
         }//end inner if
         if(computerSelect=="paper"){
-            console.log("You Win! Scissors beats Paper");
+            result.textContent = "You Win! Scissors beats Paper";
             gameStatus = status.WIN;
         }//end nested if
     }//end outer if
 
     if(playerSelect==computerSelect){
-        console.log("The game is a tie");
+        result.textContent = "The game is a tie";
         gameStatus = status.DRAW;
     }//end if
+    
+    switch(gameStatus){
+        case status.WIN:
+            +playerPoint++;
+            break;
+        case status.LOSE:
+            +computerPoint++;
+            break;
+        case status.DRAW:
+            break;
+    }//end switch
+
+    score.innerHTML = '<p>Player Point: ' + playerPoint + '</p>';
+    score.innerHTML += '<p>Computer Point: ' + computerPoint + '</p>';
+    if(playerPoint==5)
+        score.innerHTML += '<p>Player wins</p>';
+    else if(computerPoint==5)
+        score.innerHTML += '<p>Computer wins </p>';
+    if(playerPoint==5 || computerPoint==5){
+        playerPoint=0;
+        computerPoint=0;
+    }
 } //end function playRound
 
 playerBtn.forEach( (button) => {
@@ -68,35 +93,4 @@ playerBtn.forEach( (button) => {
         let computer = counterPlay();
         playRound(player,computer);
     })
-}
-);
-
-           /* function game(){
-                for(let i=1; i<=5; i++){
-                    let player = prompt("Enter your choice: ");
-                    player = player.toLowerCase();
-                    let computer = counterPlay();
-                    playRound(player,computer);
-                    switch(gameStatus){
-                        case status.WIN:
-                            +playerPoint++;
-                            break;
-                        case status.LOSE:
-                            +computerPoint++;
-                            break;
-                        case status.DRAW:
-                            break;
-                    }//end switch
-                }//end for loop
-                console.log("\nYour Point: " + playerPoint + "\nComputer Point: " + computerPoint);
-                if(playerPoint > computerPoint)
-                    console.log("\nPlayer wins with a point of " + playerPoint);
-                else if(playerPoint < computerPoint)
-                    console.log("\nComputer wins with a point of " + computerPoint);
-                else
-                    console.log("\nDraw");
-            }//end function game
-            game();  */
-            /*let player = prompt("Enter your choice: ");
-            player = player.toLowerCase();*/
-            
+});
