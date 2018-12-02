@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+    background-color: aliceblue;
+    position: relative;
+    top: 50px;
+    font-family: cursive;
+}
+#selection{
+    border: 1px solid aliceblue;
+    height: 100px;
+    width: 400px;
+    margin: 0 auto;
+}
+#rock, #paper, #scissors{
+    color:#2a78bd;
+    background-color:black;
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    position: relative;
+    top: 25px;
+    margin-right: 15px;
+}
+#results{
+    color:brown;
+    font-size:50px;
+}
+#score{
+   font-size:30px;
+   color:blueviolet;
+}
