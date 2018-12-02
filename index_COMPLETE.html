@@ -6,15 +6,21 @@
     </head>
 
     <body>
+        <div id="selection">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+
         <script>
-            const status = {
+            /*const status = {
                 WIN: 'win',
                 LOSE: 'lose',
                 DRAW: 'draw'
             }
 
             let gameStatus = status.WIN;
-            let playerPoint = 0; let computerPoint = 0;
+            let playerPoint = 0; let computerPoint = 0; */
 
             function counterPlay(){
                 let a = 1 + Math.floor( Math.random()*3 );
@@ -27,6 +33,8 @@
                         return "scissors";
                 } //end switch
             }//end function couterPlay
+
+            let playerBtn = document.querySelectorAll('button');
             
             function playRound(playerSelect, computerSelect){
                 
@@ -64,12 +72,12 @@
                 }//end outer if
 
                 if(playerSelect==computerSelect){
-                    console.log("The game is a draw");
+                    console.log("The game is a tie");
                     gameStatus = status.DRAW;
                 }//end if
             } //end function playRound
 
-            function game(){
+           /* function game(){
                 for(let i=1; i<=5; i++){
                     let player = prompt("Enter your choice: ");
                     player = player.toLowerCase();
@@ -94,7 +102,18 @@
                 else
                     console.log("\nDraw");
             }//end function game
-            game();
+            game();  */
+            /*let player = prompt("Enter your choice: ");
+            player = player.toLowerCase();*/
+            
+            playerBtn.forEach( (button) => {
+                    button.addEventListener( 'click', function(e){
+                        let player = e.target.id; //gets the id of the target element and returns a string
+                        let computer = counterPlay();
+                        playRound(player,computer);
+                    })
+                }
+            );
         </script>
     </body>
 </html>
