@@ -3,98 +3,21 @@
     <head>
         <title>Rock Paper Scissors Game</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
 
     <body>
-        <script>
-            const status = {
-                WIN: 'win',
-                LOSE: 'lose',
-                DRAW: 'draw'
-            }
+        <h1>Rock-Paper-Scissors Game</h1>
+        <h3>Enter your choice</h3>
+        <div id="selection">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
 
-            let gameStatus = status.WIN;
-            let playerPoint = 0; let computerPoint = 0;
+        <div id="results"></div>
+        <div id="score"></div>
 
-            function counterPlay(){
-                let a = 1 + Math.floor( Math.random()*3 );
-                switch(a){
-                    case 1:
-                        return "rock";
-                    case 2:
-                        return "paper";
-                    case 3:
-                        return "scissors";
-                } //end switch
-            }//end function couterPlay
-            
-            function playRound(playerSelect, computerSelect){
-                
-                if(playerSelect=="rock"){
-                    if(computerSelect=="paper"){
-                        console.log("You Lose! Paper beats Rock");
-                        gameStatus = status.LOSE;
-                    }//end nested if
-                    if(computerSelect=="scissors"){
-                        console.log("You Win! Rock beats Scissors");
-                        gameStatus = status.WIN;
-                    }//end nested if
-                }//end outer if
-                
-                if(playerSelect=="paper"){
-                    if(computerSelect=="rock"){
-                        console.log("You Win! Paper beats Rock");
-                        gameStatus = status.WIN;
-                    }//end nested if
-                    if(computerSelect=="scissors"){
-                        console.log("You Lose! Scissors beats Paper");
-                        gameStatus = status.LOSE;
-                    }//end nested if
-                }//end outer if
-                
-                if(playerSelect=="scissors"){
-                    if(computerSelect=="rock"){
-                        console.log("You Lose! Rock beats Scissors");
-                        gameStatus = status.LOSE;
-                    }//end inner if
-                    if(computerSelect=="paper"){
-                        console.log("You Win! Scissors beats Paper");
-                        gameStatus = status.WIN;
-                    }//end nested if
-                }//end outer if
-
-                if(playerSelect==computerSelect){
-                    console.log("The game is a draw");
-                    gameStatus = status.DRAW;
-                }//end if
-            } //end function playRound
-
-            function game(){
-                for(let i=1; i<=5; i++){
-                    let player = prompt("Enter your choice: ");
-                    player = player.toLowerCase();
-                    let computer = counterPlay();
-                    playRound(player,computer);
-                    switch(gameStatus){
-                        case status.WIN:
-                            +playerPoint++;
-                            break;
-                        case status.LOSE:
-                            +computerPoint++;
-                            break;
-                        case status.DRAW:
-                            break;
-                    }//end switch
-                }//end for loop
-                console.log("\nYour Point: " + playerPoint + "\nComputer Point: " + computerPoint);
-                if(playerPoint > computerPoint)
-                    console.log("\nPlayer wins with a point of " + playerPoint);
-                else if(playerPoint < computerPoint)
-                    console.log("\nComputer wins with a point of " + computerPoint);
-                else
-                    console.log("\nDraw");
-            }//end function game
-            game();
-        </script>
+        <script src="main.js"></script>
     </body>
 </html>
